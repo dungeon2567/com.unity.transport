@@ -18,6 +18,7 @@ namespace Unity.Networking.Transport
         private delegate void MethodDelegate(void* functionPtr, void* arguments, int argumentsSize);
 
         [MonoPInvokeCallback(typeof(MethodDelegate))]
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private static void Method(void* functionPtr, void* arguments, int argumentsSize)
             => ((delegate * < void*, int, void >)functionPtr)(arguments, argumentsSize);
 
